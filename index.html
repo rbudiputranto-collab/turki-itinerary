@@ -953,8 +953,12 @@ window._goto=function(id){if(id)selPlace(id);};
 function renderSheet(id){
   var idx=P.findIndex(function(x){return x.id===id;});
   var p=P[idx];
-  var murl=p.lat&&p.lng?"https://www.google.com/maps/search/?api=1&query="+p.lat+","+p.lng+"&query_place_id=":"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(p.n+", "+p.q);
-if(p.lat&&p.lng) murl="https://maps.google.com/?q="+p.lat+","+p.lng+"&ll="+p.lat+","+p.lng+"&z=17";
+  var murl;
+  if(p.lat&&p.lng&&p.q){
+    murl="https://www.google.com/maps/search/"+encodeURIComponent(p.q)+"/@"+p.lat+","+p.lng+",17z";
+  } else {
+    murl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(p.n);
+  }
 
   // hero
   var hero="";
