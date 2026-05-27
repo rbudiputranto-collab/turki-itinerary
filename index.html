@@ -676,7 +676,7 @@ input,select{font-family:inherit;}
     ">
       <div style="background:rgba(200,164,92,.2);border:1px solid rgba(200,164,92,.4);color:#e4c98a;font-size:12px;font-weight:600;padding:6px 13px;border-radius:20px;backdrop-filter:blur(8px);">🏙️ Istanbul</div>
       <div style="background:rgba(200,164,92,.2);border:1px solid rgba(200,164,92,.4);color:#e4c98a;font-size:12px;font-weight:600;padding:6px 13px;border-radius:20px;backdrop-filter:blur(8px);">🎈 Cappadocia</div>
-      <div style="background:rgba(200,164,92,.2);border:1px solid rgba(200,164,92,.4);color:#e4c98a;font-size:12px;font-weight:600;padding:6px 13px;border-radius:20px;backdrop-filter:blur(8px);">🏡 Safranbolu</div>
+      <div style="background:rgba(200,164,92,.2);border:1px solid rgba(200,164,92,.4);color:#e4c98a;font-size:12px;font-weight:600;padding:6px 13px;border-radius:20px;backdrop-filter:blur(8px);">🌊 Antalya</div>
     </div>
 
     <!-- Loading dots -->
@@ -826,52 +826,56 @@ input,select{font-family:inherit;}
 <script>
 (function(){
 var DATES={1:"Kamis, 4 Jun",2:"Jumat, 5 Jun",3:"Sabtu, 6 Jun",4:"Minggu, 7 Jun",5:"Senin, 8 Jun",6:"Selasa, 9 Jun",7:"Rabu, 10 Jun",8:"Kamis, 11 Jun",9:"Jumat, 12 Jun"};
-var DN={1:"Tiba Istanbul",2:"Sultanahmet",3:"Galata + Karakoy",4:"Bosphorus + Bus Malam",5:"Tiba Cappadocia",6:"Full Day Cappadocia",7:"Cappadocia ke Antalya",8:"Antalya ke Istanbul",9:"Istanbul + Kepulangan"};
-var DC={1:"#3D6B99",2:"#3D6B99",3:"#3D6B99",4:"#B85C3A",5:"#E67E22",6:"#E67E22",7:"#2A7B88",8:"#2A7B88",9:"#27AE60"};
+var DN={1:"Tiba Istanbul",2:"Sultanahmet",3:"Dolmabahce + Galata",4:"Bosphorus + Bus Malam",5:"Tiba Cappadocia",6:"Full Day Cappadocia",7:"Antalya + Bus Malam",8:"Istanbul Prince Islands",9:"Kepulangan"};
+var DC={1:"#3D6B99",2:"#3D6B99",3:"#B85C3A",4:"#3D6B99",5:"#E67E22",6:"#E67E22",7:"#2A7B88",8:"#3D6B99",9:"#27AE60"};
 
 var P=[
-{id:1,d:1,n:"Istanbul Airport (IST)",t:"18:00",c:"#3D6B99",e:"\u2708\ufe0f",q:"Istanbul Airport IST Turkey",lat:41.2619,lng:28.7419,desc:"Tiba di Istanbul! Proses imigrasi dan ambil bagasi. Taksi flat ~1.000 Lira ke Taksim (~Rp385rb berdua).",tags:["Istanbul", "Arrival"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/03-istanbul-airport.jpg"]},
-{id:2,d:1,n:"Hotel Area Taksim",t:"20:30",c:"#C8A45C",e:"\ud83c\udfe8",q:"Taksim Square Istanbul",lat:41.0369,lng:28.985,desc:"Check-in hotel area Taksim / Pera / Sisihane. Lokasi sentral, dekat Istiklal, Galata, cafe, restoran, dan metro.",tags:["Hotel", "Taksim", "Check-in"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/04-taksim.jpg"]},
-{id:3,d:1,n:"Islak Burger Kizilkayalar",t:"22:30",c:"#27AE60",e:"\ud83c\udf54",q:"Kizilkayalar Islak Burger Istanbul Taksim",lat:41.0352,lng:28.9837,desc:"Islak Burger legendaris Istanbul, buka sampai 05:00! ~50-80 Lira. Street food Turki pertama yang wajib dicoba malam pertama.",tags:["Street Food", "Malam", "Murah"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/05-islak-burger.jpg"]},
-{id:4,d:2,n:"Blue Mosque (Sultan Ahmed)",t:"08:00",c:"#3D6B99",e:"\ud83d\udd4c",q:"Blue Mosque Sultan Ahmed Istanbul",lat:41.0054,lng:28.9768,desc:"Gratis masuk! 20.000 keramik Iznik biru. Bawa syal untuk istri. Datang pagi sebelum ramai. Satu-satunya masjid 6 menara di Istanbul.",tags:["Gratis", "Masjid", "6 Menara"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/07-blue-mosque.jpg"]},
-{id:5,d:2,n:"Hagia Sophia",t:"09:30",c:"#3D6B99",e:"\ud83d\udd4c",q:"Hagia Sophia Istanbul",lat:41.0086,lng:28.9802,desc:"Arsitektur 1.500 tahun - dari gereja, museum, kini masjid. Tiket ~25 EUR/org (~Rp440rb). Datang setelah Blue Mosque.",tags:["UNESCO", "Wajib", "1.500 Tahun"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/06-hagia-sophia.jpg"]},
-{id:6,d:2,n:"Greenhill Sultanahmet",t:"12:30",c:"#27AE60",e:"\ud83c\udf7d\ufe0f",q:"Greenhill Restaurant Sultanahmet Istanbul",lat:41.006,lng:28.978,desc:"Makan siang di kawasan Sultanahmet. Menu Turkish dan Mediterranean yang lezat dengan suasana nyaman.",tags:["Makan Siang", "Sultanahmet"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/06-hagia-sophia.jpg"]},
-{id:7,d:2,n:"Basilica Cistern",t:"14:00",c:"#2A7B88",e:"\ud83d\udca7",q:"Basilica Cistern Yerebatan Istanbul",lat:41.0084,lng:28.9778,desc:"Ruang bawah tanah Romawi 1.500 tahun. Tiket ~1.950 TL. Dingin, fotogenik. Cari kepala Medusa terbalik!",tags:["Underground", "Romawi", "Fotogenik"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/08-basilica-cistern.jpg"]},
-{id:8,d:2,n:"Topkapi Palace",t:"15:30",c:"#B85C3A",e:"\ud83d\udc51",q:"Topkapi Palace Museum Istanbul",lat:41.0115,lng:28.9833,desc:"Istana pusat Ottoman 600 tahun. Tiket ~2.700 TL. TUTUP SELASA. Lihat pedang, jubah nabi, dan view Bosphorus.",tags:["Ottoman", "Wajib", "Tutup Selasa"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/09-topkapi-palace.jpg"]},
-{id:9,d:2,n:"Gulhane Park",t:"17:30",c:"#27AE60",e:"\ud83c\udf39",q:"Gulhane Park Istanbul",lat:41.0135,lng:28.9833,desc:"80.000 mawar mekar di bulan Juni! Taman bersejarah bekas kebun Topkapi. Gratis, persis di sebelah Topkapi.",tags:["Gratis", "Taman", "Mawar Juni"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/26-gulhane-park.jpg"]},
-{id:10,d:2,n:"Setustu Tea Garden",t:"18:30",c:"#27AE60",e:"\u2615",q:"Setustu Tea Garden Istanbul Gulhane",lat:41.0128,lng:28.9841,desc:"Teh Cay dengan view Bosphorus dari atas bukit Gulhane. Pengalaman lokal yang autentik dan romantis.",tags:["Teh Cay", "View Bosphorus", "Lokal"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/27-setustu-tea-garden.jpg"]},
-{id:11,d:2,n:"Roof Mezze 360",t:"19:30",c:"#27AE60",e:"\ud83c\udf7d\ufe0f",q:"Roof Mezze 360 Restaurant Istanbul",lat:41.007,lng:28.979,desc:"Makan malam dengan view 360 derajat Istanbul dari rooftop. Menu mezze dan seafood khas Turki.",tags:["Dinner", "Rooftop", "View 360"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/28-roof-mezze-360.jpg"]},
-{id:12,d:3,n:"Galata Tower",t:"09:00",c:"#3D6B99",e:"\ud83d\uddfc",q:"Galata Tower Istanbul",lat:41.0256,lng:28.9742,desc:"Menara Genoa abad 14, view 360 derajat Istanbul. Tiket ~900 TL/org. Indah saat golden hour pagi.",tags:["View 360", "Ikonik", "Golden Hour"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/11-galata-tower.jpg"]},
-{id:13,d:3,n:"Galata Streets & Karakoy",t:"10:30",c:"#3D6B99",e:"\u2615",q:"Galata Karakoy Istanbul coffee brunch",lat:41.023,lng:28.974,desc:"Explore gang-gang Galata yang charming. Coffee atau brunch di kafe-kafe artsy Karakoy yang cozy.",tags:["Explore", "Kafe", "Artsy"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/11-galata-tower.jpg"]},
-{id:14,d:3,n:"Galata Bridge",t:"14:00",c:"#3D6B99",e:"\ud83c\udf09",q:"Galata Bridge Istanbul",lat:41.0165,lng:28.9742,desc:"Jembatan ikonik Istanbul yang menghubungkan Karakoy dan Eminonu. Banyak pemancing lokal, view Golden Horn yang indah.",tags:["Ikonik", "View", "Lokal"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/29-galata-bridge.jpg"]},
-{id:15,d:3,n:"Spice Bazaar (Egyptian Bazaar)",t:"14:30",c:"#B85C3A",e:"\ud83c\udf36\ufe0f",q:"Egyptian Spice Bazaar Istanbul Misir Carsisi",lat:41.0162,lng:28.9706,desc:"Wangi rempah, Turkish delight, teh premium. Lebih kecil dari Grand Bazaar tapi lebih terkonsentrasi. Cocok untuk oleh-oleh.",tags:["Bazaar", "Oleh-oleh", "Rempah"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/30-spice-bazaar.jpg"]},
-{id:16,d:3,n:"Parole Cafe Restaurant",t:"19:00",c:"#27AE60",e:"\ud83c\udf7d\ufe0f",q:"Parole Cafe Restaurant Istanbul Istiklal",lat:41.033,lng:28.9774,desc:"Istiklal Street bintang 4.4. Atmosphere cozy, menu modern-Turki. ~400-600 Lira berdua.",tags:["Dinner", "Istiklal", "Bintang 4.4"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/12-parole-cafe.jpg"]},
-{id:17,d:4,n:"Bosphorus Cruise",t:"09:00",c:"#3D6B99",e:"\u26f4\ufe0f",q:"Bosphorus Cruise Istanbul Eminonu",lat:41.0165,lng:28.9742,desc:"Naik feri dari Eminonu. View Dolmabahce, Ortakoy Mosque, Rumeli Fortress, jembatan Bosphorus. Dua benua dalam satu pelayaran! Durasi +-2 jam.",tags:["Cruise", "Bosphorus", "Dua Benua"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/31-bosphorus-cruise.jpg"]},
-{id:18,d:4,n:"Ortakoy Mosque",t:"11:30",c:"#3D6B99",e:"\ud83d\udd4c",q:"Ortakoy Mosque Istanbul Bosphorus",lat:41.0478,lng:29.0275,desc:"Masjid tepi Bosphorus paling fotogenik di Istanbul. View Bosphorus Bridge di belakang masjid. Street food khas Ortakoy.",tags:["Fotogenik", "Bosphorus", "Street Food"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/32-ortakoy-mosque.jpg"]},
-{id:19,d:4,n:"Grand Bazaar",t:"14:00",c:"#B85C3A",e:"\ud83d\udecd\ufe0f",q:"Grand Bazaar Kapalicarsi Istanbul",lat:41.0108,lng:28.9681,desc:"4.000+ toko, 61 jalan dalam satu atap! Gang samping = harga lokal. TUTUP MINGGU.",tags:["Shopping", "Tawar", "Tutup Minggu"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/15-grand-bazaar.jpg"]},
-{id:20,d:4,n:"Esenler Otogar \u2014 Bus Malam",t:"22:00",c:"#E67E22",e:"\ud83d\ude8c",q:"Esenler Otogar Istanbul bus terminal",lat:41.0487,lng:28.8946,desc:"Bus malam ke Cappadocia. Suha Turizm / Metro Turizm. Kursi 2+1, WiFi, snack gratis. Tiba Goreme +-08.00. Metro M1 dari Taksim +-35 mnt.",tags:["Bus Malam", "Cappadocia", "22:00"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/15-grand-bazaar.jpg"]},
-{id:21,d:5,n:"Old Town Stone House Goreme",t:"09:00",c:"#C8A45C",e:"\ud83c\udfe8",q:"Old Town Stone House Goreme Cappadocia",lat:38.6431,lng:34.8284,desc:"Cave hotel autentik bintang 4.8. Kamar batu kapur sejuk, rooftop sarapan sambil lihat balon udara.",tags:["Cave Hotel", "Bintang 4.8", "Goreme"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/16-cave-hotel-goreme.jpg"]},
-{id:22,d:5,n:"Uchisar Castle",t:"11:00",c:"#E67E22",e:"\ud83c\udff0",q:"Uchisar Castle Cappadocia",lat:38.6316,lng:34.7952,desc:"Titik tertinggi Cappadocia - menara batu 60m. 275 tangga ke puncak untuk view terluas. Bagus dikunjungi siang hari.",tags:["View Terbaik", "Bintang 4.6", "Cappadocia"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/19-uchisar-castle.jpg"]},
-{id:23,d:5,n:"Goreme Open Air Museum",t:"14:30",c:"#E67E22",e:"\u26ea",q:"Goreme Open Air Museum Cappadocia",lat:38.6532,lng:34.8358,desc:"Museum gua terbuka terbesar di dunia, UNESCO. Gereja abad 10-12 dipahat dalam bukit dengan fresco Byzantine. Tiket ~20 EUR.",tags:["UNESCO", "Museum", "Byzantine"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/18-goreme-open-air.jpg"]},
-{id:24,d:5,n:"Pigeon Valley",t:"17:00",c:"#E67E22",e:"\ud83d\udd4a\ufe0f",q:"Pigeon Valley Cappadocia",lat:38.6378,lng:34.8094,desc:"Lembah merpati dengan gua-gua batu kuno. Berhenti di tepi jalan untuk foto golden hour. Gratis.",tags:["Valley", "Foto", "Gratis"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/20-pigeon-valley.jpg"]},
-{id:25,d:5,n:"Topdeck Cave Restaurant",t:"19:30",c:"#27AE60",e:"\ud83e\uded5",q:"Topdeck Cave Restaurant Goreme",lat:38.6432,lng:34.827,desc:"Restoran gua terbaik Goreme bintang 4.6. Meze dan slow-cooked lamb. ~400-600 TL berdua. Reservasi wajib!",tags:["Cave Dining", "Bintang 4.6", "Reservasi Wajib"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/17-topdeck-restaurant.jpg"]},
-{id:26,d:6,n:"Balon Udara Cappadocia",t:"05:00",c:"#E67E22",e:"\ud83c\udf88",q:"Hot Air Balloon Cappadocia Goreme sunrise",lat:38.6431,lng:34.8284,desc:"Pengalaman balon udara paling magis di dunia! ~Rp4-8jt/org. Atau nonton dari rooftop hotel - gratis dan tetap menakjubkan.",tags:["Balon Udara", "Sunrise", "Opsional"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/16-cave-hotel-goreme.jpg"]},
-{id:27,d:6,n:"Pasabag / Monks Valley",t:"09:30",c:"#E67E22",e:"\ud83c\udf44",q:"Pasabag Monks Valley Cappadocia",lat:38.677,lng:34.8555,desc:"Fairy chimneys raksasa berbentuk jamur bintang 4.7. Tiket ~12 EUR. Bisa masuk gua pertapa di dalam chimney!",tags:["Fairy Chimneys", "Bintang 4.7", "Ikonik"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/34-monks-valley.jpg"]},
-{id:28,d:6,n:"Devrent Valley",t:"11:00",c:"#E67E22",e:"\ud83e\udea8",q:"Devrent Valley Imagination Valley Cappadocia",lat:38.681,lng:34.879,desc:"Lembah formasi batu berbentuk hewan dan karakter unik. Foto kreatif, gratis, 10 menit dari Goreme.",tags:["Formasi Batu", "Gratis", "Foto Kreatif"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/35-devrent-valley.jpg"]},
-{id:29,d:6,n:"Avanos Town",t:"14:00",c:"#E67E22",e:"\ud83c\udffa",q:"Avanos town Cappadocia pottery",lat:38.7174,lng:34.8435,desc:"Kota tepi sungai Kizilirmak terkenal dengan pottery tradisional Hittite. Jalan santai, kafe lokal, workshop kerajinan.",tags:["Pottery", "Tepi Sungai", "Lokal"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/36-avanos.jpg"]},
-{id:30,d:6,n:"Derinkuyu Underground City",t:"15:30",c:"#E67E22",e:"\ud83c\udfdb\ufe0f",q:"Derinkuyu Underground City Cappadocia",lat:38.3726,lng:34.7347,desc:"Kota bawah tanah 8 lantai ke bawah! Muat 20.000 orang, dibangun abad 8 SM. Tiket ~15 EUR, +-1.5 jam.",tags:["Underground", "UNESCO", "8 Lantai"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/37-derinkuyu.jpg"]},
-{id:31,d:7,n:"Kayseri Airport \u2014 Fly Antalya",t:"09:00",c:"#2A7B88",e:"\u2708\ufe0f",q:"Kayseri Airport ASR Turkey",lat:38.7704,lng:35.4953,desc:"Flight Kayseri ke Antalya. Pegasus / AnadoluJet, durasi +-1 jam. Transfer ke Kayseri Airport +-45 menit dari Goreme.",tags:["Pesawat", "Kayseri", "Antalya"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/03-istanbul-airport.jpg"]},
-{id:32,d:7,n:"Kaleici Old Town Antalya",t:"14:00",c:"#2A7B88",e:"\ud83c\udfdb\ufe0f",q:"Kaleici Old Town Antalya Turkey",lat:36.886,lng:30.7,desc:"Hadrian Gate (gerbang Romawi 130 M), Clock Tower, Yivli Minaret, Old Harbour. Gang-gang batu bersejarah jantung kota Antalya.",tags:["Bersejarah", "Fotogenik", "Romawi"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/38-kaleici-antalya.jpg"]},
-{id:33,d:7,n:"Duden Waterfalls",t:"16:00",c:"#2A7B88",e:"\ud83d\udca6",q:"Duden Waterfalls Antalya Turkey",lat:36.9183,lng:30.7619,desc:"Air terjun indah di taman kota Antalya. Gratis, sangat menyegarkan. Durasi +-30 menit.",tags:["Air Terjun", "Gratis", "Alam"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/39-duden-waterfall.jpg"]},
-{id:34,d:7,n:"Konyaalti Beach",t:"17:00",c:"#2A7B88",e:"\ud83c\udfd6\ufe0f",q:"Konyaalti Beach Antalya Turkey",lat:36.878,lng:30.6526,desc:"Pantai berbatu khas Mediterania dengan view pegunungan Taurus yang dramatis dan laut biru.",tags:["Pantai", "View Taurus", "Mediterania"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/40-konyaalti-beach.jpg"]},
-{id:35,d:7,n:"Sunset Roof Restaurant",t:"19:30",c:"#27AE60",e:"\ud83c\udf05",q:"Sunset Roof Restaurant Kaleici Antalya",lat:36.8866,lng:30.7053,desc:"Rooftop restaurant di Kaleici Old Town. Sunset dan dinner view laut Mediterania dan live music. ~Rp300-600rb/org. Reservasi disarankan.",tags:["Sunset", "Rooftop", "Live Music"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/41-sunset-roof-antalya.jpg"]},
-{id:36,d:8,n:"Aspendos",t:"08:30",c:"#2A7B88",e:"\ud83c\udfdf\ufe0f",q:"Aspendos Theatre Antalya Turkey",lat:36.9412,lng:31.1717,desc:"Teater Romawi terbaik dan terlengkap di dunia! Masih dipakai untuk konser. Tiket ~15 EUR, +-1.5 jam. 45 mnt dari Antalya.",tags:["Romawi", "Teater", "Terbaik di Dunia"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/42-aspendos.jpg"]},
-{id:37,d:8,n:"Side Ancient City",t:"11:30",c:"#2A7B88",e:"\ud83c\udfdb\ufe0f",q:"Side Ancient City Antalya Turkey",lat:36.7687,lng:31.3894,desc:"Kota pantai Romawi kuno. Temple of Apollo tepi laut - pantai dan reruntuhan dalam satu frame. 30 mnt dari Aspendos.",tags:["Romawi", "Pantai", "Temple of Apollo"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/43-side-ancient-city.jpg"]},
-{id:38,d:8,n:"Antalya Airport \u2014 Fly Istanbul",t:"17:30",c:"#2A7B88",e:"\u2708\ufe0f",q:"Antalya Airport AYT Turkey",lat:36.8987,lng:30.8005,desc:"Flight Antalya ke Istanbul. Durasi +-1.5 jam. Tiba Istanbul +-19.00. Transfer ke Juno Hotel.",tags:["Pesawat", "Antalya", "Istanbul"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/03-istanbul-airport.jpg"]},
-{id:39,d:9,n:"Suites Taksim \u2014 Breakfast",t:"07:00",c:"#C8A45C",e:"\ud83c\udf73",q:"Suites Taksim restaurant Istanbul",lat:41.0369,lng:28.985,desc:"Sarapan santai di Suites Taksim sebelum hari terakhir di Istanbul.",tags:["Sarapan", "Taksim", "Santai"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/13-sarapan-turki.jpg"]},
-{id:40,d:9,n:"Dolmabahce Palace",t:"09:00",c:"#B85C3A",e:"\ud83c\udff0",q:"Dolmabahce Palace Istanbul",lat:41.039,lng:29.0,desc:"Istana terbesar Ottoman, 285 ruangan arsitektur Eropa-Ottoman. Tiket ~900 TL/org. Buka Jumat, tutup Senin dan Rabu.",tags:["Ottoman", "Ikonik", "Tutup Senin & Rabu"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/44-dolmabahce-palace.jpg"]},
-{id:41,d:9,n:"Ortakoy \u2014 Foto & Santai",t:"11:30",c:"#3D6B99",e:"\ud83d\udcf8",q:"Ortakoy Istanbul Bosphorus",lat:41.0478,lng:29.0275,desc:"Santai di Ortakoy, foto di depan Ortakoy Mosque dengan Bosphorus Bridge di belakang. Street food khas Ortakoy.",tags:["Santai", "Foto", "Bosphorus"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/32-ortakoy-mosque.jpg"]},
-{id:42,d:9,n:"Istanbul Airport \u2014 Pulang",t:"15:00",c:"#3D6B99",e:"\u2708\ufe0f",q:"Istanbul Airport IST Turkey",lat:41.2619,lng:28.7419,desc:"Transfer ke Istanbul Airport. Butuh 45-60 menit dari pusat kota. Check-in dan imigrasi jam 16.30. Flight 19.35 ke Jakarta.",tags:["Kepulangan", "Flight 19:35", "Jakarta"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/03-istanbul-airport.jpg"]}
+{id:1,d:1,n:"Istanbul Airport",t:"18:00",c:"#3D6B99",e:"✈️",q:"Istanbul Airport IST Turkey",lat:41.2619,lng:28.7419,desc:"Tiba di Istanbul! Taksi flat ~1.000 Lira ke Taksim. Atau Havaist bus ~70 Lira/org.",tags:["Istanbul", "Arrival"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/03-istanbul-airport.jpg"]},
+{id:2,d:1,n:"Hotel Area Taksim",t:"20:30",c:"#C8A45C",e:"🏨",q:"Taksim Square Istanbul",lat:41.0369,lng:28.985,desc:"Check-in hotel area Taksim / Pera / Sisihane. Lokasi sentral, dekat Istiklal, Galata, cafe, restoran.",tags:["Hotel", "Taksim"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/04-taksim.jpg"]},
+{id:3,d:1,n:"Islak Burger Kizilkayalar",t:"22:30",c:"#27AE60",e:"🍔",q:"Kizilkayalar Islak Burger Istanbul Taksim",lat:41.0352,lng:28.9837,desc:"Islak Burger legendaris Istanbul buka sampai 05:00! ~50-80 Lira. Street food Turki pertama wajib dicoba.",tags:["Street Food", "Malam", "Murah"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/05-islak-burger.jpg"]},
+{id:4,d:2,n:"Blue Mosque",t:"08:00",c:"#3D6B99",e:"🕌",q:"Blue Mosque Sultan Ahmed Istanbul",lat:41.0054,lng:28.9768,desc:"Gratis masuk! 20.000 keramik Iznik biru. Bawa syal. Datang pagi sebelum ramai. Satu-satunya masjid 6 menara di Istanbul.",tags:["Gratis", "Masjid", "6 Menara"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/07-blue-mosque.jpg"]},
+{id:5,d:2,n:"Hagia Sophia",t:"09:30",c:"#3D6B99",e:"🕌",q:"Hagia Sophia Istanbul",lat:41.0086,lng:28.9802,desc:"Arsitektur 1.500 tahun dari gereja, museum, kini masjid. Tiket ~25 EUR/org. 50 meter dari Blue Mosque.",tags:["UNESCO", "Wajib", "1.500 Tahun"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/06-hagia-sophia.jpg"]},
+{id:6,d:2,n:"Greenhill Sultanahmet",t:"12:30",c:"#27AE60",e:"🍽️",q:"Greenhill Restaurant Sultanahmet Istanbul",lat:41.006,lng:28.978,desc:"Makan siang di kawasan Sultanahmet. Menu Turkish dan Mediterranean yang lezat.",tags:["Makan Siang", "Sultanahmet"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/06b-greenhill-sultanahmet.jpg"]},
+{id:7,d:2,n:"Basilica Cistern",t:"14:00",c:"#2A7B88",e:"💧",q:"Basilica Cistern Yerebatan Istanbul",lat:41.0084,lng:28.9778,desc:"Ruang bawah tanah Romawi 1.500 tahun. Tiket ~1.950 TL. Dingin dan fotogenik. Cari kepala Medusa terbalik!",tags:["Underground", "Romawi", "Fotogenik"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/08-basilica-cistern.jpg"]},
+{id:8,d:2,n:"Topkapi Palace",t:"15:30",c:"#B85C3A",e:"🏰",q:"Topkapi Palace Museum Istanbul",lat:41.0115,lng:28.9833,desc:"Istana pusat Ottoman 600 tahun. Tiket ~2.700 TL. TUTUP SELASA. View Bosphorus dari taman.",tags:["Ottoman", "Wajib", "Tutup Selasa"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/09-topkapi-palace.jpg"]},
+{id:9,d:2,n:"Gulhane Park",t:"17:30",c:"#27AE60",e:"🌹",q:"Gulhane Park Istanbul",lat:41.0135,lng:28.9833,desc:"80.000 mawar mekar di bulan Juni! Taman bersejarah bekas kebun Topkapi. Gratis, persis di sebelah Topkapi.",tags:["Gratis", "Taman", "Mawar Juni"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/26-gulhane-park.jpg"]},
+{id:10,d:2,n:"Setustu Tea Garden",t:"18:30",c:"#27AE60",e:"☕",q:"Setustu Tea Garden Istanbul Gulhane",lat:41.0128,lng:28.9841,desc:"Teh Cay dengan view Bosphorus dari atas bukit Gulhane. Pengalaman lokal yang autentik.",tags:["Teh Cay", "View Bosphorus", "Lokal"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/27-setustu-tea-garden.jpg"]},
+{id:11,d:2,n:"Roof Mezze 360",t:"19:30",c:"#27AE60",e:"🍽️",q:"Roof Mezze 360 Restaurant Istanbul",lat:41.007,lng:28.979,desc:"Makan malam dengan view 360 derajat Istanbul dari rooftop. Menu mezze dan seafood khas Turki.",tags:["Dinner", "Rooftop", "View 360"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/28-roof-mezze-360.jpg"]},
+{id:12,d:3,n:"Dolmabahce Palace",t:"09:00",c:"#B85C3A",e:"🏰",q:"Dolmabahce Palace Istanbul",lat:41.039,lng:29.0,desc:"Istana terbesar Ottoman, 285 ruangan. Tiket ~900 TL/org. Buka Sabtu, tutup Senin dan Rabu.",tags:["Ottoman", "Ikonik", "Tutup Senin & Rabu"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/44-dolmabahce-palace.jpg"]},
+{id:13,d:3,n:"Ortakoy Mosque",t:"11:30",c:"#3D6B99",e:"🕌",q:"Ortakoy Mosque Istanbul Bosphorus",lat:41.0478,lng:29.0275,desc:"Masjid tepi Bosphorus paling fotogenik di Istanbul. View Bosphorus Bridge. 10 menit dari Dolmabahce.",tags:["Fotogenik", "Bosphorus", "Street Food"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/32-ortakoy-mosque.jpg"]},
+{id:14,d:3,n:"Makan Siang Karakoy",t:"12:30",c:"#27AE60",e:"🍽️",q:"Karakoy Istanbul restaurants",lat:41.023,lng:28.974,desc:"Makan siang di area Karakoy yang artsy. Banyak pilihan restoran modern dan lokal.",tags:["Makan Siang", "Karakoy", "Artsy"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/14-karakoy.jpg"]},
+{id:15,d:3,n:"Galata Tower",t:"14:00",c:"#3D6B99",e:"🗼",q:"Galata Tower Istanbul",lat:41.0256,lng:28.9742,desc:"Menara Genoa abad 14, view 360 derajat Istanbul. Tiket ~900 TL/org. 5 menit jalan dari Karakoy.",tags:["View 360", "Ikonik", "Abad 14"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/11-galata-tower.jpg"]},
+{id:16,d:3,n:"Galata Bridge",t:"15:30",c:"#3D6B99",e:"🌉",q:"Galata Bridge Istanbul",lat:41.0165,lng:28.9742,desc:"Jembatan ikonik Istanbul menghubungkan Karakoy dan Eminonu. View Golden Horn yang indah.",tags:["Ikonik", "View", "Lokal"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/29-galata-bridge.jpg"]},
+{id:17,d:3,n:"Spice Bazaar",t:"16:00",c:"#B85C3A",e:"🌶️",q:"Egyptian Spice Bazaar Istanbul",lat:41.0162,lng:28.9706,desc:"Wangi rempah, Turkish delight, teh premium. Di ujung Galata Bridge. Cocok untuk oleh-oleh.",tags:["Bazaar", "Oleh-oleh", "Rempah"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/30-spice-bazaar.jpg"]},
+{id:18,d:3,n:"Parole Cafe Restaurant",t:"19:00",c:"#27AE60",e:"☕",q:"Parole Cafe Restaurant Istanbul Istiklal",lat:41.033,lng:28.9774,desc:"Istiklal Street bintang 4.4. Atmosphere cozy, menu modern-Turki. ~400-600 Lira berdua.",tags:["Dinner", "Istiklal", "Bintang 4.4"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/12-parole-cafe.jpg"]},
+{id:19,d:4,n:"Bosphorus Cruise",t:"09:00",c:"#3D6B99",e:"⛴️",q:"Bosphorus Cruise Istanbul Eminonu ferry",lat:41.0165,lng:28.9742,desc:"Naik feri dari Eminonu. View Dolmabahce, Ortakoy, Rumeli Fortress, jembatan Bosphorus. Dua benua! Durasi +-2 jam.",tags:["Cruise", "Bosphorus", "Dua Benua"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/31-bosphorus-cruise.jpg"]},
+{id:20,d:4,n:"Eminonu Waterfront",t:"11:30",c:"#3D6B99",e:"🌊",q:"Eminonu waterfront Istanbul",lat:41.017,lng:28.974,desc:"Santai di tepi laut Eminonu setelah cruise. Suasana lokal yang ramai.",tags:["Santai", "Tepi Laut", "Lokal"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/20b-eminonu.jpg"]},
+{id:21,d:4,n:"Grand Bazaar",t:"13:30",c:"#B85C3A",e:"🛍️",q:"Grand Bazaar Kapalicarsi Istanbul",lat:41.0108,lng:28.9681,desc:"4.000+ toko, 61 jalan dalam satu atap! TUTUP MINGGU.",tags:["Shopping", "Tawar", "Tutup Minggu"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/15-grand-bazaar.jpg"]},
+{id:22,d:4,n:"Esenler Otogar - Bus Malam",t:"22:00",c:"#E67E22",e:"🚌",q:"Esenler Otogar Istanbul bus terminal",lat:41.0487,lng:28.8946,desc:"Bus malam ke Cappadocia. Suha Turizm / Metro Turizm. Kursi 2+1, WiFi, snack. Tiba Goreme +-08.00.",tags:["Bus Malam", "Cappadocia", "22:00"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/22-esenler-otogar.jpg"]},
+{id:23,d:5,n:"Old Town Stone House Goreme",t:"09:00",c:"#C8A45C",e:"🏨",q:"Old Town Stone House Goreme Cappadocia",lat:38.6431,lng:34.8284,desc:"Cave hotel autentik bintang 4.8. Sarapan rooftop sambil lihat balon udara. Ambil rental mobil untuk 2 hari.",tags:["Cave Hotel", "Bintang 4.8", "2 Hari Rental"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/16-cave-hotel-goreme.jpg"]},
+{id:24,d:5,n:"Uchisar Castle",t:"11:00",c:"#E67E22",e:"🏰",q:"Uchisar Castle Cappadocia",lat:38.6316,lng:34.7952,desc:"Titik tertinggi Cappadocia, menara batu 60m. 275 tangga ke puncak. 4km barat Goreme.",tags:["View Terbaik", "Bintang 4.6", "4km Goreme"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/19-uchisar-castle.jpg"]},
+{id:25,d:5,n:"Goreme Open Air Museum",t:"14:30",c:"#E67E22",e:"⛪",q:"Goreme Open Air Museum Cappadocia",lat:38.6532,lng:34.8358,desc:"Museum gua terbuka UNESCO. Gereja abad 10-12 dengan fresco Byzantine. Tiket ~20 EUR.",tags:["UNESCO", "Museum", "Byzantine"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/18-goreme-open-air.jpg"]},
+{id:26,d:5,n:"Pigeon Valley",t:"17:00",c:"#E67E22",e:"🕊️",q:"Pigeon Valley Cappadocia",lat:38.6378,lng:34.8094,desc:"Lembah merpati dengan gua-gua batu kuno. Foto golden hour. Gratis.",tags:["Valley", "Golden Hour", "Gratis"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/20-pigeon-valley.jpg"]},
+{id:27,d:5,n:"Topdeck Cave Restaurant",t:"19:30",c:"#27AE60",e:"🍽️",q:"Topdeck Cave Restaurant Goreme",lat:38.6432,lng:34.827,desc:"Restoran gua terbaik Goreme bintang 4.6. Meze dan slow-cooked lamb. Reservasi wajib! Mobil dibawa besok.",tags:["Cave Dining", "Bintang 4.6", "Reservasi Wajib"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/17-topdeck-restaurant.jpg"]},
+{id:28,d:6,n:"Balon Udara Cappadocia",t:"05:00",c:"#E67E22",e:"🎈",q:"Hot Air Balloon Cappadocia Goreme sunrise",lat:38.6431,lng:34.8284,desc:"Pengalaman balon udara paling magis di dunia! ~Rp4-8jt/org. Atau nonton dari rooftop gratis.",tags:["Balon Udara", "Sunrise", "Opsional"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/28-balon-udara.jpg"]},
+{id:29,d:6,n:"Pasabag Monks Valley",t:"09:30",c:"#E67E22",e:"🍄",q:"Pasabag Monks Valley Cappadocia",lat:38.677,lng:34.8555,desc:"Fairy chimneys raksasa bentuk jamur bintang 4.7. Tiket ~12 EUR. 8km utara Goreme.",tags:["Fairy Chimneys", "Bintang 4.7", "8km Goreme"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/34-monks-valley.jpg"]},
+{id:30,d:6,n:"Devrent Valley",t:"11:00",c:"#E67E22",e:"🪸",q:"Devrent Valley Imagination Valley Cappadocia",lat:38.681,lng:34.879,desc:"Lembah formasi batu bentuk hewan unik. Foto kreatif, gratis. 3km dari Pasabag.",tags:["Formasi Batu", "Gratis", "Foto Kreatif"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/35-devrent-valley.jpg"]},
+{id:31,d:6,n:"Makan Siang di Avanos",t:"12:30",c:"#27AE60",e:"🍽️",q:"Avanos town Cappadocia restaurant",lat:38.7174,lng:34.8435,desc:"Makan siang di Avanos, kota tepi sungai Kizilirmak. Banyak restoran lokal autentik.",tags:["Makan Siang", "Avanos", "Lokal"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/36-avanos.jpg"]},
+{id:32,d:6,n:"Avanos Town",t:"14:00",c:"#E67E22",e:"🏺",q:"Avanos pottery workshop Cappadocia",lat:38.7174,lng:34.8435,desc:"Kota tepi sungai Kizilirmak terkenal dengan pottery tradisional Hittite.",tags:["Pottery", "Tepi Sungai", "Lokal"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/36-avanos.jpg"]},
+{id:33,d:6,n:"Derinkuyu Underground City",t:"15:30",c:"#E67E22",e:"🏛️",q:"Derinkuyu Underground City Cappadocia",lat:38.3726,lng:34.7347,desc:"Kota bawah tanah 8 lantai! Muat 20.000 orang, abad 8 SM. Tiket ~15 EUR. 30km selatan Goreme.",tags:["Underground", "UNESCO", "8 Lantai"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/37-derinkuyu.jpg"]},
+{id:34,d:6,n:"Goreme Bus Station - Bus Malam",t:"21:00",c:"#E67E22",e:"🚌",q:"Goreme bus station Cappadocia",lat:38.6431,lng:34.8284,desc:"Bus malam ke Antalya. Kamil Koc / Suha Turizm. Kembalikan rental mobil dulu. Tiba Antalya +-05.00.",tags:["Bus Malam", "Antalya", "21:00"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/18-goreme-open-air.jpg"]},
+{id:35,d:7,n:"Kaleici Old Town Antalya",t:"09:00",c:"#2A7B88",e:"🏛️",q:"Kaleici Old Town Antalya Turkey",lat:36.886,lng:30.7,desc:"Hadrian Gate (gerbang Romawi 130 M), Clock Tower, Yivli Minaret, Old Harbour. Ambil rental mobil di Otogar.",tags:["Bersejarah", "Fotogenik", "Romawi"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/38-kaleici-antalya.jpg"]},
+{id:36,d:7,n:"Duden Waterfalls",t:"13:00",c:"#2A7B88",e:"💦",q:"Duden Waterfalls Antalya Turkey",lat:36.9183,lng:30.7619,desc:"Air terjun indah di taman kota Antalya. Gratis. 10km timur laut Kaleici.",tags:["Air Terjun", "Gratis", "Alam"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/39-duden-waterfall.jpg"]},
+{id:37,d:7,n:"Konyaalti Beach",t:"14:00",c:"#2A7B88",e:"🌊",q:"Konyaalti Beach Antalya Turkey",lat:36.878,lng:30.6526,desc:"Pantai berbatu Mediterania dengan view pegunungan Taurus dan laut biru. 5km barat Kaleici.",tags:["Pantai", "View Taurus", "Mediterania"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/40-konyaalti-beach.jpg"]},
+{id:38,d:7,n:"Aspendos",t:"15:30",c:"#2A7B88",e:"🏟️",q:"Aspendos Theatre Antalya Turkey",lat:36.9412,lng:31.1717,desc:"Teater Romawi terbaik di dunia! Masih dipakai untuk konser. Tiket ~15 EUR. 45km timur Antalya.",tags:["Romawi", "Teater", "Terbaik di Dunia"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/42-aspendos.jpg"]},
+{id:39,d:7,n:"Sunset Roof Restaurant",t:"18:30",c:"#27AE60",e:"🌅",q:"Sunset Roof Restaurant Kaleici Antalya",lat:36.8866,lng:30.7053,desc:"Rooftop restaurant di Kaleici. Sunset dan dinner view laut Mediterania dan live music. Reservasi disarankan.",tags:["Sunset", "Rooftop", "Live Music"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/41-sunset-roof-antalya.jpg"]},
+{id:40,d:7,n:"Antalya Otogar - Bus Malam",t:"21:00",c:"#2A7B88",e:"🚌",q:"Antalya Otogar bus terminal Turkey",lat:36.9081,lng:30.6956,desc:"Bus malam ke Istanbul. Metro Turizm / Kamil Koc. Kembalikan mobil dan ambil koper. Tiba Esenler +-06.00.",tags:["Bus Malam", "Istanbul", "21:00"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/40-antalya-otogar.jpg"]},
+{id:41,d:8,n:"Suites Taksim - Breakfast",t:"07:00",c:"#C8A45C",e:"🍳",q:"Suites Taksim restaurant Istanbul",lat:41.0369,lng:28.985,desc:"Sarapan santai setelah bus malam di Suites Taksim. Istirahat sebelum hari terakhir.",tags:["Sarapan", "Taksim", "Recovery"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/13-sarapan-turki.jpg"]},
+{id:42,d:8,n:"Juno Hotel - Check-in",t:"09:00",c:"#C8A45C",e:"🏨",q:"Juno Hotel Istanbul Taksim",lat:41.0369,lng:28.985,desc:"Early check-in Juno Hotel. Mandi, bebersih, istirahat sebelum ke Prince Islands.",tags:["Hotel", "Early Check-in", "Taksim"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/04-taksim.jpg"]},
+{id:43,d:8,n:"Buyukada - Prince Islands",t:"13:00",c:"#3D6B99",e:"⛴️",q:"Buyukada Prince Islands Istanbul ferry",lat:40.8781,lng:29.1244,desc:"Feri dari Kabatas +-1.5 jam ke Buyukada. Pulau tanpa mobil, tenang dan romantis. Naik kereta kuda (fayton) keliling pulau.",tags:["Prince Islands", "Romantis", "Tanpa Mobil"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/10-kuzguncuk.jpg"]},
+{id:44,d:8,n:"Makan Malam Terakhir Istanbul",t:"20:30",c:"#27AE60",e:"🍽️",q:"Juno Hotel Istanbul Taksim dinner",lat:41.0369,lng:28.985,desc:"Makan malam spesial malam terakhir di Istanbul setelah kembali dari Prince Islands.",tags:["Dinner", "Malam Terakhir", "Istanbul"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/04-taksim.jpg"]},
+{id:45,d:9,n:"Belanja Oleh-oleh Terakhir",t:"09:00",c:"#27AE60",e:"🛍️",q:"Grand Bazaar Taksim Istanbul shopping",lat:41.0108,lng:28.9681,desc:"Belanja oleh-oleh terakhir di Grand Bazaar, Taksim, atau duty free airport.",tags:["Belanja", "Oleh-oleh", "Terakhir"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/15-grand-bazaar.jpg"]},
+{id:46,d:9,n:"Istanbul Airport - Pulang",t:"15:00",c:"#3D6B99",e:"✈️",q:"Istanbul Airport IST Turkey",lat:41.2619,lng:28.7419,desc:"Transfer ke Istanbul Airport. Butuh 45-60 menit. Check-in jam 16.30. Flight 19.35 ke Jakarta.",tags:["Kepulangan", "Flight 19:35", "Jakarta"],photos:["https://raw.githubusercontent.com/rbudiputranto-collab/turki-itinerary/main/03-istanbul-airport.jpg"]}
 ];
 
 var CAT_EM={food:"\uD83C\uDF7D\uFE0F",ticket:"\uD83C\uDF9F\uFE0F",transport:"\uD83D\uDE8C",shop:"\uD83D\uDECD\uFE0F",hotel:"\uD83C\uDFE8",other:"\uD83D\uDCE6"};
@@ -1023,34 +1027,14 @@ document.getElementById("shbg").onclick=closeSheet;
   sh.addEventListener("touchstart",function(e){var sc=document.getElementById("sh-sv");sy=e.touches[0].clientY;drag=sc.scrollTop<=0;},{passive:true});
   sh.addEventListener("touchmove",function(e){if(!drag)return;var dy=e.touches[0].clientY-sy;if(dy>0){sh.style.transform="translateY("+dy+"px)";sh.style.transition="none";}},{passive:true});
   sh.addEventListener("touchend",function(e){var dy=e.changedTouches[0].clientY-sy;sh.style.transform="";sh.style.transition="";if(dy>80)closeSheet();drag=false;},{passive:true});
-
-// Fix: expose all functions needed by HTML onclick
-window.goScreen = function(name, el) {
-  document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active");});
-  var scr = document.getElementById("s-"+name);
-  if(scr) scr.classList.add("active");
-  document.querySelectorAll(".bn").forEach(function(b){b.classList.remove("on");});
-  if(el) el.classList.add("on");
-  if(name==="wx" && !wxLoaded) loadWeather();
-  if(name==="kurs" && !kursData.tl) loadKurs();
-  if(name==="cl") renderChecklist();
-  if(name==="exp") renderExpenses();
-};
-window.addExp = window.addExpense;
-window.delExp = window.delExpense;
-window.toggleCk = window.toggleCheck;
-window.resetCl = window.resetChecklist;
-window.loadWx = window.loadWeather;
-window.doCalc = window.calcConvert;
-window.openLb = window._lb;
-
 })();
 
 // WEATHER
 var WX_CITIES=[
-  {name:"Istanbul",label:"4\u20137 Jun",lat:41.01,lng:28.98,days:[4,5,6,7]},
-  {name:"Cappadocia",label:"8\u201310 Jun",lat:38.64,lng:34.83,days:[8,9,10]},
-  {name:"Safranbolu",label:"11 Jun",lat:41.24,lng:32.69,days:[11]}
+  {name:"Istanbul",label:"4-7 Jun",lat:41.01,lng:28.98,days:[4,5,6,7]},
+  {name:"Cappadocia",label:"8-9 Jun",lat:38.64,lng:34.83,days:[8,9]},
+  {name:"Antalya",label:"10 Jun",lat:36.89,lng:30.70,days:[10]},
+  {name:"Istanbul",label:"11-12 Jun",lat:41.01,lng:28.98,days:[11,12]}
 ];
 var WX={0:"\u2600\uFE0F Cerah",1:"\uD83C\uDF24\uFE0F Cerah berawan",2:"\u26C5 Sebagian berawan",3:"\u2601\uFE0F Mendung",45:"\uD83C\uDF2B\uFE0F Berkabut",51:"\uD83C\uDF26\uFE0F Gerimis ringan",61:"\uD83C\uDF27\uFE0F Hujan ringan",63:"\uD83C\uDF27\uFE0F Hujan",80:"\uD83C\uDF26\uFE0F Hujan shower",95:"\u26C8\uFE0F Badai petir"};
 function wxIco(c){var s=(WX[c]||"\uD83C\uDF21\uFE0F").split(" ");return s[0];}
@@ -1107,21 +1091,21 @@ window.loadWx=function(){
 
 // KURS
 window.loadKurs=function(){
-  // Primary: Open Exchange Rates (free, has TRY)
-  fetch("https://open.er-api.com/v6/latest/IDR")
+  var sub=document.getElementById("kurs-sub");
+  if(sub) sub.textContent="Memuat kurs...";
+  fetch("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/idr.json")
     .then(function(r){return r.json();})
     .then(function(data){
-      if(data.rates&&data.rates.TRY&&data.rates.USD){
-        kurs.tl=1/data.rates.TRY;
-        kurs.usd=1/data.rates.USD;
-        kurs.eur=data.rates.EUR?1/data.rates.EUR:null;
+      if(data.idr&&data.idr.try&&data.idr.usd){
+        kurs.tl=1/data.idr.try;
+        kurs.usd=1/data.idr.usd;
+        kurs.eur=data.idr.eur?1/data.idr.eur:null;
         kurs.ts=new Date();
-        kurs.src="Open Exchange Rates";
         renderKurs();
-      } else { throw new Error("no TRY"); }
-    }).catch(function(){
-      // Fallback: exchangerate.host
-      fetch("https://api.exchangerate.host/latest?base=IDR&symbols=TRY,USD")
+      } else { throw new Error("no data"); }
+    })
+    .catch(function(){
+      fetch("https://open.er-api.com/v6/latest/IDR")
         .then(function(r){return r.json();})
         .then(function(data){
           if(data.rates&&data.rates.TRY){
@@ -1129,12 +1113,11 @@ window.loadKurs=function(){
             kurs.usd=1/data.rates.USD;
             kurs.eur=data.rates.EUR?1/data.rates.EUR:null;
             kurs.ts=new Date();
-            kurs.src="ExchangeRate.host";
             renderKurs();
-          } else { throw new Error("no TRY"); }
-        }).catch(function(){
-          // Last fallback: hardcoded approximate
-          kurs.tl=415; kurs.usd=17200; kurs.ts=null; kurs.src="Perkiraan (offline)";
+          } else { throw new Error("no data"); }
+        })
+        .catch(function(){
+          kurs.tl=480; kurs.usd=16200; kurs.eur=17500; kurs.ts=null;
           renderKurs();
         });
     });
@@ -1299,27 +1282,6 @@ document.getElementById("lb").onclick=function(e){if(e.target===this)this.classL
 
 // INIT
 buildDaybar(); buildList();
-
-// Fix: expose all functions needed by HTML onclick
-window.goScreen = function(name, el) {
-  document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active");});
-  var scr = document.getElementById("s-"+name);
-  if(scr) scr.classList.add("active");
-  document.querySelectorAll(".bn").forEach(function(b){b.classList.remove("on");});
-  if(el) el.classList.add("on");
-  if(name==="wx" && !wxLoaded) loadWeather();
-  if(name==="kurs" && !kursData.tl) loadKurs();
-  if(name==="cl") renderChecklist();
-  if(name==="exp") renderExpenses();
-};
-window.addExp = window.addExpense;
-window.delExp = window.delExpense;
-window.toggleCk = window.toggleCheck;
-window.resetCl = window.resetChecklist;
-window.loadWx = window.loadWeather;
-window.doCalc = window.calcConvert;
-window.openLb = window._lb;
-
 })();
 
 // ── SPLASH SCREEN ──
@@ -1357,27 +1319,6 @@ window.openLb = window._lb;
       splash.style.display='none';
     }, 600);
   }, 2600);
-
-// Fix: expose all functions needed by HTML onclick
-window.goScreen = function(name, el) {
-  document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active");});
-  var scr = document.getElementById("s-"+name);
-  if(scr) scr.classList.add("active");
-  document.querySelectorAll(".bn").forEach(function(b){b.classList.remove("on");});
-  if(el) el.classList.add("on");
-  if(name==="wx" && !wxLoaded) loadWeather();
-  if(name==="kurs" && !kursData.tl) loadKurs();
-  if(name==="cl") renderChecklist();
-  if(name==="exp") renderExpenses();
-};
-window.addExp = window.addExpense;
-window.delExp = window.delExpense;
-window.toggleCk = window.toggleCheck;
-window.resetCl = window.resetChecklist;
-window.loadWx = window.loadWeather;
-window.doCalc = window.calcConvert;
-window.openLb = window._lb;
-
 })();
 
 </script>
