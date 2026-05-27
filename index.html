@@ -820,7 +820,10 @@ input,select{font-family:inherit;}
 </div>
 
 <div class="lb" id="lb">
-  <button cl
+  <button class="lb-x" id="lb-x">✕</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
 <script>
 (function(){
 var DATES={1:"Kamis, 4 Jun",2:"Jumat, 5 Jun",3:"Sabtu, 6 Jun",4:"Minggu, 7 Jun",5:"Senin, 8 Jun",6:"Selasa, 9 Jun",7:"Rabu, 10 Jun",8:"Kamis, 11 Jun",9:"Jumat, 12 Jun"};
@@ -1315,12 +1318,6 @@ buildDaybar(); buildList();
     splash.style.transform='scale(1.04)';
     splash.style.pointerEvents='none';
     setTimeout(function(){
-      splash.style.display='none';
-    }, 600);
-  }, 2600);
-})();
-
-ut(function(){
       splash.style.display='none';
     }, 600);
   }, 2600);
