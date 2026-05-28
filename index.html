@@ -768,6 +768,13 @@ input,select{font-family:inherit;}
       <div class="cl-pb"><div class="cl-pf" id="cl-pf" style="width:0"></div></div>
     </div>
     <div id="cl-content"></div>
+    <div style="padding:12px 16px 8px;border-top:1px solid var(--sep);display:flex;gap:8px;">
+      <input id="cl-custom-inp" type="text" placeholder="+ Tambah item..." 
+        style="flex:1;background:var(--bg2);border:1px solid var(--sep);border-radius:10px;padding:10px 12px;color:var(--t1);font-size:15px;outline:none;"
+        onkeydown="if(event.key==='Enter')addCustomItem()">
+      <button onclick="addCustomItem()" 
+        style="background:var(--gold);color:#000;border:none;border-radius:10px;padding:10px 16px;font-size:15px;font-weight:600;cursor:pointer;">Tambah</button>
+    </div>
   </div></div>
 </div>
 <div class="screen" id="s-exp">
@@ -892,6 +899,7 @@ function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
 
 var expenses=lsGet("rnt_exp",[]);
 var checked=lsGet("rnt_ck",[]);
+var customItems=lsGet("rnt_ci",[]);
 
 // COUNTDOWN
 function updateCD(){
@@ -1224,6 +1232,21 @@ function renderCl(){
     });
     html+="</div>";
   });
+  // Custom items section
+  if(customItems.length>0){
+    html+="<div class=\"cl-sec\"><div class=\"cl-st\">✏️ Tambahan Saya</div>";
+    customItems.forEach(function(item){
+      total++;
+      var ck=checked.indexOf(item.id)>=0;
+      if(ck)done++;
+      html+="<div class=\"cl-item"+(ck?" ckd":"")+"\">"
+        +"<div class=\"cl-ck\" onclick=\"toggleCk(&quot;"+item.id+"&quot;)\"><span class=\"cl-cm\">\u2713</span></div>"
+        +"<div style=\"flex:1\"><div class=\"cl-in\">"+item.n+"</div></div>"
+        +"<button onclick=\"delCustomItem(&quot;"+item.id+"&quot;)\" style=\"background:none;border:none;color:var(--red);font-size:18px;padding:4px 8px;cursor:pointer;\">\u00D7</button>"
+        +"</div>";
+    });
+    html+="</div>";
+  }
   document.getElementById("cl-content").innerHTML=html;
   document.getElementById("cl-pv").textContent=done+"/"+total;
   document.getElementById("cl-pf").style.width=(total>0?Math.round(done/total*100):0)+"%";
@@ -1234,7 +1257,27 @@ window.toggleCk=function(id){
   if(i>=0)checked.splice(i,1);else checked.push(id);
   lsSet("rnt_ck",checked); renderCl();
 };
-window.resetCl=function(){if(confirm("Reset semua checklist?")){checked=[];lsSet("rnt_ck",[]);renderCl();}};
+window.
+window.addCustomItem=function(){
+  var inp=document.getElementById("cl-custom-inp");
+  var name=inp.value.trim();
+  if(!name) return;
+  var id="ci_"+Date.now();
+  customItems.push({id:id,n:name});
+  lsSet("rnt_ci",customItems);
+  inp.value="";
+  renderCl();
+};
+
+window.delCustomItem=function(id){
+  customItems=customItems.filter(function(x){return x.id!==id;});
+  checked=checked.filter(function(x){return x!==id;});
+  lsSet("rnt_ci",customItems);
+  lsSet("rnt_ck",checked);
+  renderCl();
+};
+
+resetCl=function(){if(confirm("Reset semua checklist?")){checked=[];lsSet("rnt_ck",[]);renderCl();}};
 
 // EXPENSE
 window.addExp=function(){
